@@ -33,7 +33,7 @@ function maChoiceField($compile) {
                         refreshAttributes = 'refresh-delay="refreshDelay" refresh="refresh({ $search: $select.search })"';
                     }
 
-                    var choices = scope.choices() ? scope.choices : (field.choices ? field.choices() : []);
+                    var choices = (angular.isFunction(scope.choices) && scope.choices()) ? scope.choices : (field.choices ? field.choices() : []);
                     var attributes = field.attributes();
                     scope.placeholder = (attributes && attributes.placeholder) || 'Filter values';
 
